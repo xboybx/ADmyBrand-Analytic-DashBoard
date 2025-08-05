@@ -72,7 +72,7 @@ export const exportToPDF = (data: AnalyticsData, filename: string) => {
   });
 
   // Add AI insights
-  const currentY = (pdf as any).lastAutoTable.finalY + 15;
+  const currentY = (pdf as any).lastAutoTable && (pdf as any).lastAutoTable.finalY ? (pdf as any).lastAutoTable.finalY + 15 : 100;
   pdf.text('AI Insights & Predictions', 14, currentY);
   
   // Save PDF

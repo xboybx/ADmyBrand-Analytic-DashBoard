@@ -59,10 +59,10 @@ export const Dashboard: React.FC = () => {
       <Header />
       <main className="p-6 space-y-8">
         <div className="max-w-7xl mx-auto space-y-8">
-+         <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 mb-4">
-+           <h1 className="text-2xl font-bold text-gray-900 dark:text-white ">AI-Powered Marketing Analytics Dashboard</h1>
-+           <p className="text-gray-700 dark:text-gray-300">This dashboard provides a comprehensive overview of your marketing performance, including total revenue, conversions, ROAS, and more. Gain actionable insights and predictions powered by AI to optimize your campaigns and drive growth.</p>
-+         </div>
+         <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 mb-4">
+           <h1 className="text-2xl font-bold text-gray-900 dark:text-white ">AI-Powered Marketing Analytics Dashboard</h1>
+           <p className="text-gray-700 dark:text-gray-300">This dashboard provides a comprehensive overview of your marketing performance, including total revenue, conversions, ROAS, and more. Gain actionable insights and predictions powered by AI to optimize your campaigns and drive growth.</p>
+         </div>
           <MetricsGrid metrics={data?.metrics || []} />
           <AIInsights data={data!} onRefresh={refreshAllData} />
           <ChartsSection data={data} />
