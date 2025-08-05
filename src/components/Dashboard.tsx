@@ -69,6 +69,10 @@ export const Dashboard: React.FC = () => {
           <DataTable data={data?.tableData || []} />
         </div>
       </main>
+      <footer className="mt-12 text-center text-gray-500 dark:text-gray-400 text-sm">
+        <div>&copy; {new Date().getFullYear()} Developed by jaswanth</div>
+        <div className="mb-2">submitted to ADmyBrand.com</div>
+      </footer>
     </div>
   );
 };
