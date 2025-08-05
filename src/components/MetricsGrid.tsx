@@ -15,7 +15,7 @@ const iconMap = {
 
 export const MetricsGrid: React.FC<MetricsGridProps> = ({ metrics }) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div id="metrics-grid-section" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {metrics.map((metric, index) => {
         const Icon = iconMap[metric.id as keyof typeof iconMap] || Activity;
         const isPositive = metric.change >= 0;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { LineChart, Line, AreaChart, Area, BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import { AnalyticsData } from '../types';
+import { Info } from 'lucide-react';
 
 interface ChartsSectionProps {
   data: AnalyticsData | null;
@@ -19,6 +20,12 @@ export const ChartsSection: React.FC<ChartsSectionProps> = ({ data }) => {
           Revenue Trend
           <span className="ml-2 px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs rounded-full">
             Live
+          </span>
+          <span className="ml-2 relative group">
+            <Info className="h-4 w-4 text-gray-400 hover:text-blue-500 cursor-pointer" />
+            <span className="absolute left-6 top-1/2 -translate-y-1/2 w-56 bg-gray-900 text-white text-xs rounded px-3 py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10 shadow-lg pointer-events-none">
+              Shows the monthly revenue trend over time, helping you track growth and seasonality.
+            </span>
           </span>
         </h3>
         <ResponsiveContainer width="100%" height={300}>
@@ -66,8 +73,14 @@ export const ChartsSection: React.FC<ChartsSectionProps> = ({ data }) => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* User Acquisition */}
         <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow duration-300">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6 flex items-center">
             User Acquisition Channels
+            <span className="ml-2 relative group">
+              <Info className="h-4 w-4 text-gray-400 hover:text-blue-500 cursor-pointer" />
+              <span className="absolute left-6 top-1/2 -translate-y-1/2 w-56 bg-gray-900 text-white text-xs rounded px-3 py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10 shadow-lg pointer-events-none">
+                Displays the number of users acquired from each marketing channel.
+              </span>
+            </span>
           </h3>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={data.userAcquisition}>
@@ -102,8 +115,14 @@ export const ChartsSection: React.FC<ChartsSectionProps> = ({ data }) => {
 
         {/* Traffic Sources */}
         <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow duration-300">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6 flex items-center">
             Traffic Sources
+            <span className="ml-2 relative group">
+              <Info className="h-4 w-4 text-gray-400 hover:text-blue-500 cursor-pointer" />
+              <span className="absolute left-6 top-1/2 -translate-y-1/2 w-56 bg-gray-900 text-white text-xs rounded px-3 py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10 shadow-lg pointer-events-none">
+                Shows the percentage share of each traffic source driving visitors to your site.
+              </span>
+            </span>
           </h3>
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>

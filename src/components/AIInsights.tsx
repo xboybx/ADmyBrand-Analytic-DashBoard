@@ -5,9 +5,10 @@ import { AnalyticsData } from '../types';
 
 interface AIInsightsProps {
   data: AnalyticsData;
+  onRefresh?: () => void;
 }
 
-export const AIInsights: React.FC<AIInsightsProps> = ({ data }) => {
+export const AIInsights: React.FC<AIInsightsProps> = ({ data, onRefresh }) => {
   const [insights, setInsights] = useState<string[]>([]);
   const [predictions, setPredictions] = useState<{
     nextMonthRevenue: string;
@@ -25,7 +26,6 @@ export const AIInsights: React.FC<AIInsightsProps> = ({ data }) => {
         aiService.generatePredictions(data),
         aiService.generateReportSummary(data)
       ]);
-      
       setInsights(insightsResult);
       setPredictions(predictionsResult);
       setReportSummary(reportResult);
@@ -36,12 +36,20 @@ export const AIInsights: React.FC<AIInsightsProps> = ({ data }) => {
     }
   };
 
+  const handleRefresh = async () => {
+    if (onRefresh) {
+      onRefresh();
+    } else {
+      await generateAIContent();
+    }
+  };
+
   useEffect(() => {
     generateAIContent();
   }, [data]);
 
   return (
-    <div className="space-y-6">
+    <div id="ai-insights-section" className="space-y-6">
       {/* AI Insights Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-3">
@@ -58,7 +66,7 @@ export const AIInsights: React.FC<AIInsightsProps> = ({ data }) => {
           </div>
         </div>
         <button
-          onClick={generateAIContent}
+          onClick={handleRefresh}
           disabled={loading}
           className="flex items-center space-x-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors duration-200 disabled:opacity-50"
         >
